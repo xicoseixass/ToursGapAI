@@ -4,10 +4,10 @@ import { supabase } from '@/lib/supabase';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { profile, city, whatsapp, motivation } = body;
+    const { name, email, profile, city, whatsapp, motivation } = body;
 
     // Validate required fields
-    if (!profile || !city || !whatsapp || !motivation) {
+    if (!name || !email || !profile || !city || !whatsapp || !motivation) {
       return NextResponse.json(
         { error: 'Todos os campos são obrigatórios' },
         { status: 400 }
@@ -19,10 +19,12 @@ export async function POST(request: NextRequest) {
       .from('leads')
       .insert([
         {
+          name,
+          email,
           profile,
           city,
           whatsapp,
-          pitch: motivation, // Map motivation to pitch field in database
+          motivation,
         },
       ])
       .select();
