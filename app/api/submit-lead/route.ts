@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +13,20 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Create Supabase client in the route handler
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.error('Missing environment variables');
+      return NextResponse.json(
+        { error: 'Configuração do servidor incorreta' },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     // Insert into Supabase
     const { data, error } = await supabase
