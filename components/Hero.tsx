@@ -5,19 +5,19 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative pt-48 pb-32 overflow-hidden mesh-gradient">
+    <section className="relative pt-32 md:pt-48 pb-20 md:pb-32 overflow-hidden mesh-gradient">
       {/* Organic shapes */}
-      <div className="organic-shape bg-strawberry-red-200 w-[500px] h-[500px] rounded-full -top-20 -right-20"></div>
-      <div className="organic-shape bg-strawberry-red-100 w-[600px] h-[600px] rounded-[30%] -bottom-32 -left-32"></div>
-      <div className="organic-shape bg-strawberry-red-200 w-80 h-80 rounded-full top-1/4 left-1/3"></div>
+      <div className="organic-shape bg-strawberry-red-200 w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full -top-20 -right-20"></div>
+      <div className="organic-shape bg-strawberry-red-100 w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-[30%] -bottom-32 -left-32"></div>
+      <div className="organic-shape bg-strawberry-red-200 w-48 md:w-80 h-48 md:h-80 rounded-full top-1/4 left-1/3 hidden md:block"></div>
 
       {/* Geometric decorations */}
-      <div className="absolute top-40 right-[15%] w-24 h-24 border-4 border-strawberry-red-200 rounded-2xl rotate-12 opacity-50"></div>
-      <div className="absolute bottom-40 left-[10%] w-16 h-16 bg-strawberry-red-100 rounded-full opacity-60"></div>
+      <div className="absolute top-40 right-[15%] w-16 md:w-24 h-16 md:h-24 border-4 border-strawberry-red-200 rounded-2xl rotate-12 opacity-50 hidden md:block"></div>
+      <div className="absolute bottom-40 left-[10%] w-12 md:w-16 h-12 md:h-16 bg-strawberry-red-100 rounded-full opacity-60 hidden md:block"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <div className="space-y-10 relative">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
+          <div className="space-y-6 md:space-y-10 relative">
             {/* Beta Badge */}
             <div className="inline-flex items-center space-x-3 px-1 py-1 bg-white rounded-full border-4 border-strawberry-red-950 shadow-[4px_4px_0px_0px_rgba(76,5,25,1)]">
               <div className="flex items-center pl-4 pr-2">
@@ -45,9 +45,9 @@ export default function Hero() {
 
             {/* Headline */}
             <div className="relative">
-              <h1 className="text-6xl lg:text-8xl font-black leading-[0.95] font-display text-strawberry-red-950">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-[0.95] font-display text-strawberry-red-950">
                 Não adivinhe o seu{' '}
-                <span className="text-strawberry-red-600 underline decoration-8 decoration-strawberry-red-200 underline-offset-8">
+                <span className="text-strawberry-red-600 underline decoration-4 md:decoration-8 decoration-strawberry-red-200 underline-offset-4 md:underline-offset-8">
                   negócio.
                 </span>
                 <br />
@@ -57,16 +57,16 @@ export default function Hero() {
 
             {/* Subheadline */}
             <div className="relative">
-              <p className="text-2xl text-strawberry-red-950 max-w-xl leading-snug font-medium">
+              <p className="text-lg sm:text-xl md:text-2xl text-strawberry-red-950 max-w-xl leading-snug font-medium">
                 O TourGap.AI identifica falhas reais dos seus concorrentes e deteta oportunidades de lucro em{' '}
                 <span className="bg-strawberry-red-200 px-2 font-bold">Lisboa</span>.
               </p>
             </div>
 
             {/* CTA */}
-            <div className="flex flex-col sm:flex-row items-center gap-8 pt-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-8 pt-4">
               <a
-                className="w-full sm:w-auto bg-strawberry-red-600 text-white px-10 py-6 rounded-xl font-black text-sm tracking-widest neo-button flex items-center justify-center group"
+                className="w-full sm:w-auto bg-strawberry-red-600 text-white px-6 md:px-10 py-5 md:py-6 rounded-xl font-black text-xs md:text-sm tracking-widest neo-button flex items-center justify-center group"
                 href="#apply"
               >
                 <span>QUERO SER PARCEIRO FUNDADOR</span>
@@ -74,7 +74,7 @@ export default function Hero() {
                   arrow_forward
                 </span>
               </a>
-              <div className="flex items-center space-x-2 text-strawberry-red-950 font-bold">
+              <div className="flex items-center justify-center space-x-2 text-strawberry-red-950 font-bold">
                 <span className="material-symbols-outlined fill-1 text-strawberry-red-600">verified</span>
                 <span className="text-xs uppercase tracking-tight">Acesso restrito a 50 vagas</span>
               </div>
@@ -82,34 +82,34 @@ export default function Hero() {
           </div>
 
           {/* Right side - Market Gap Card */}
-          <div className="relative">
-            <div className="absolute -top-14 -right-8 w-32 h-32 z-30 starburst-sticker text-[12px] leading-tight p-2 shadow-xl">
+          <div className="relative mt-8 lg:mt-0">
+            <div className="absolute -top-8 md:-top-14 -right-4 md:-right-8 w-24 h-24 md:w-32 md:h-32 z-30 starburst-sticker text-[10px] md:text-[12px] leading-tight p-2 shadow-xl">
               <span className="font-black">
                 LÍDER EM<br />
                 LISBOA
               </span>
             </div>
 
-            <div className="glass-premium rounded-3xl p-8 relative overflow-hidden neo-card">
-              <div className="flex items-center justify-between mb-10">
+            <div className="glass-premium rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden neo-card">
+              <div className="flex items-center justify-between mb-6 md:mb-10">
                 <div>
-                  <h3 className="font-black text-2xl font-display text-strawberry-red-950">
+                  <h3 className="font-black text-xl md:text-2xl font-display text-strawberry-red-950">
                     Market Gap Alert
                   </h3>
-                  <p className="text-xs font-bold text-strawberry-red-600 uppercase tracking-widest">
+                  <p className="text-[10px] md:text-xs font-bold text-strawberry-red-600 uppercase tracking-widest">
                     Análise em Tempo Real • Lisboa
                   </p>
                 </div>
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center border-4 border-strawberry-red-950 shadow-[4px_4px_0px_0px_rgba(76,5,25,1)]">
-                  <span className="material-symbols-outlined text-strawberry-red-600 text-3xl font-bold">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-xl md:rounded-2xl flex items-center justify-center border-4 border-strawberry-red-950 shadow-[4px_4px_0px_0px_rgba(76,5,25,1)]">
+                  <span className="material-symbols-outlined text-strawberry-red-600 text-2xl md:text-3xl font-bold">
                     notifications_active
                   </span>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <div className="p-5 bg-white rounded-2xl border-4 border-strawberry-red-950 shadow-[6px_6px_0px_0px_rgba(76,5,25,0.05)] flex items-center space-x-5">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-strawberry-red-950">
+              <div className="space-y-4 md:space-y-6">
+                <div className="p-4 md:p-5 bg-white rounded-xl md:rounded-2xl border-4 border-strawberry-red-950 shadow-[6px_6px_0px_0px_rgba(76,5,25,0.05)] flex items-center space-x-3 md:space-x-5">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg md:rounded-xl overflow-hidden border-2 border-strawberry-red-950 flex-shrink-0">
                     <Image
                       alt="Market Data"
                       className="w-full h-full object-cover"
@@ -118,39 +118,39 @@ export default function Hero() {
                       height={80}
                     />
                   </div>
-                  <div className="flex-grow">
-                    <div className="flex justify-between items-center mb-1">
-                      <h4 className="font-black text-strawberry-red-950">Gastronomia Vegana</h4>
-                      <span className="text-[10px] font-black bg-strawberry-red-950 text-white px-2 py-1 rounded">
+                  <div className="flex-grow min-w-0">
+                    <div className="flex justify-between items-center mb-1 gap-2">
+                      <h4 className="font-black text-strawberry-red-950 text-sm md:text-base truncate">Gastronomia Vegana</h4>
+                      <span className="text-[9px] md:text-[10px] font-black bg-strawberry-red-950 text-white px-2 py-1 rounded whitespace-nowrap">
                         SCORE: 9.2
                       </span>
                     </div>
-                    <p className="text-xs font-bold text-strawberry-red-400 mb-3 uppercase">
+                    <p className="text-[10px] md:text-xs font-bold text-strawberry-red-400 mb-2 md:mb-3 uppercase">
                       Lote: Alfama & Mouraria
                     </p>
-                    <div className="h-4 w-full bg-strawberry-red-100 rounded-full border-2 border-strawberry-red-950 overflow-hidden">
+                    <div className="h-3 md:h-4 w-full bg-strawberry-red-100 rounded-full border-2 border-strawberry-red-950 overflow-hidden">
                       <div className="h-full w-[92%] bg-strawberry-red-500"></div>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="p-6 bg-white rounded-2xl border-4 border-strawberry-red-950">
-                    <p className="text-[10px] font-black text-strawberry-red-400 uppercase tracking-widest mb-2">
+                <div className="grid grid-cols-2 gap-3 md:gap-6">
+                  <div className="p-4 md:p-6 bg-white rounded-xl md:rounded-2xl border-4 border-strawberry-red-950">
+                    <p className="text-[9px] md:text-[10px] font-black text-strawberry-red-400 uppercase tracking-widest mb-1 md:mb-2">
                       Demanda Global
                     </p>
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-4xl font-black text-strawberry-red-950">Alta</span>
-                      <span className="text-strawberry-red-600 text-lg font-black">↑ 22%</span>
+                    <div className="flex items-baseline space-x-1 md:space-x-2">
+                      <span className="text-2xl md:text-4xl font-black text-strawberry-red-950">Alta</span>
+                      <span className="text-strawberry-red-600 text-sm md:text-lg font-black">↑ 22%</span>
                     </div>
                   </div>
-                  <div className="p-6 bg-white rounded-2xl border-4 border-strawberry-red-950">
-                    <p className="text-[10px] font-black text-strawberry-red-400 uppercase tracking-widest mb-2">
+                  <div className="p-4 md:p-6 bg-white rounded-xl md:rounded-2xl border-4 border-strawberry-red-950">
+                    <p className="text-[9px] md:text-[10px] font-black text-strawberry-red-400 uppercase tracking-widest mb-1 md:mb-2">
                       Concorrência
                     </p>
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-4xl font-black text-strawberry-red-950">Baixa</span>
-                      <span className="text-emerald-500 text-lg font-black">↓ 8%</span>
+                    <div className="flex items-baseline space-x-1 md:space-x-2">
+                      <span className="text-2xl md:text-4xl font-black text-strawberry-red-950">Baixa</span>
+                      <span className="text-emerald-500 text-sm md:text-lg font-black">↓ 8%</span>
                     </div>
                   </div>
                 </div>
