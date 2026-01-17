@@ -62,11 +62,18 @@ export default function SignupPage() {
       const response = await fetch(`/api/auth/oauth?provider=${provider}`);
       const data = await response.json();
 
+      if (!response.ok) {
+        if (data.error?.includes('not enabled')) {
+          throw new Error(`${provider === 'google' ? 'Google' : 'Facebook'} login ainda não está configurado. Use email por enquanto.`);
+        }
+        throw new Error(data.error || 'Erro ao iniciar autenticação');
+      }
+
       if (data.url) {
         window.location.href = data.url;
       }
     } catch (err) {
-      setError('Erro ao iniciar autenticação');
+      setError(err instanceof Error ? err.message : 'Erro ao iniciar autenticação');
       setLoading(false);
     }
   };
