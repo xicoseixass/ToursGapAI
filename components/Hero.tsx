@@ -7,8 +7,8 @@ export default function Hero() {
   return (
     <section className="relative pt-32 md:pt-48 pb-20 md:pb-32 overflow-x-hidden mesh-gradient">
       {/* Organic shapes */}
-      <div className="organic-shape bg-strawberry-red-200 w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full -top-20 -right-10 md:-right-20"></div>
-      <div className="organic-shape bg-strawberry-red-100 w-[350px] md:w-[600px] h-[350px] md:h-[600px] rounded-[30%] -bottom-32 -left-20 md:-left-32"></div>
+      <div className="organic-shape bg-strawberry-red-200 w-[200px] md:w-[500px] h-[200px] md:h-[500px] rounded-full -top-20 -right-5 md:-right-20"></div>
+      <div className="organic-shape bg-strawberry-red-100 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-[30%] -bottom-32 -left-20 md:-left-32"></div>
       <div className="organic-shape bg-strawberry-red-200 w-48 md:w-80 h-48 md:h-80 rounded-full top-1/4 left-1/3 hidden md:block"></div>
 
       {/* Geometric decorations */}
@@ -83,7 +83,7 @@ export default function Hero() {
 
           {/* Right side - Market Gap Card */}
           <div className="relative mt-8 lg:mt-0">
-            <div className="absolute -top-8 md:-top-14 -right-4 md:-right-8 w-24 h-24 md:w-32 md:h-32 z-30 starburst-sticker text-[10px] md:text-[12px] leading-tight p-2 shadow-xl">
+            <div className="absolute -top-8 md:-top-14 -right-2 md:-right-8 w-20 h-20 md:w-32 md:h-32 z-30 starburst-sticker text-[9px] md:text-[12px] leading-tight p-2 shadow-xl">
               <span className="font-black">
                 LÍDER EM<br />
                 LISBOA
