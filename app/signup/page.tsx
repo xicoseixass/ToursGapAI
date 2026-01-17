@@ -45,8 +45,12 @@ export default function SignupPage() {
         throw new Error(data.error || 'Falha no cadastro');
       }
 
-      // Redirect to login or dashboard
-      router.push('/login?signup=success');
+      // Redirect to login with appropriate message
+      if (data.needsConfirmation) {
+        router.push('/login?signup=confirm');
+      } else {
+        router.push('/login?signup=success');
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro ao criar conta');
     } finally {

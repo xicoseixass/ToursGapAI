@@ -36,11 +36,17 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error('Supabase auth error:', error);
+
+      let errorMessage = 'Erro ao fazer login';
+
+      if (error.message === 'Invalid login credentials') {
+        errorMessage = 'Email ou senha incorretos';
+      } else if (error.message === 'Email not confirmed') {
+        errorMessage = 'Email não confirmado. Verifique sua caixa de entrada e confirme seu email.';
+      }
+
       return NextResponse.json(
-        { error: error.message === 'Invalid login credentials'
-          ? 'Email ou senha incorretos'
-          : 'Erro ao fazer login'
-        },
+        { error: errorMessage },
         { status: 401 }
       );
     }

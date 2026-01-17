@@ -10,6 +10,17 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  // Check for success/confirmation messages
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('signup') === 'success') {
+      setSuccessMessage('Conta criada com sucesso! Faça login para continuar.');
+    } else if (params.get('signup') === 'confirm') {
+      setSuccessMessage('Conta criada! Verifique seu email para confirmar antes de fazer login.');
+    }
+  }, []);
 
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,6 +95,16 @@ export default function LoginPage() {
               Faça login para continuar
             </p>
           </div>
+
+          {/* Success Message */}
+          {successMessage && (
+            <div className="mb-6 p-4 bg-green-50 border-4 border-green-600 rounded-xl">
+              <p className="text-green-900 font-bold text-sm flex items-center">
+                <span className="material-symbols-outlined mr-2 text-green-600">check_circle</span>
+                {successMessage}
+              </p>
+            </div>
+          )}
 
           {/* Error Message */}
           {error && (

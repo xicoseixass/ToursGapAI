@@ -57,15 +57,28 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      if (error.message.includes('invalid')) {
+        return NextResponse.json(
+          { error: 'Email inválido. Por favor, use um email válido.' },
+          { status: 400 }
+        );
+      }
+
       return NextResponse.json(
         { error: 'Erro ao criar conta' },
         { status: 400 }
       );
     }
 
+    // Check if email confirmation is required
+    const needsConfirmation = data.user && !data.session;
+
     return NextResponse.json(
       {
-        message: 'Conta criada com sucesso',
+        message: needsConfirmation
+          ? 'Conta criada! Verifique seu email para confirmar.'
+          : 'Conta criada com sucesso',
+        needsConfirmation,
         user: {
           id: data.user?.id,
           email: data.user?.email,
