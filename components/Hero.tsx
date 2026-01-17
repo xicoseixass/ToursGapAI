@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 md:pt-48 pb-20 md:pb-32 overflow-hidden mesh-gradient">
+    <section className="relative pt-32 md:pt-48 pb-20 md:pb-32 overflow-x-hidden mesh-gradient">
       {/* Organic shapes */}
       <div className="organic-shape bg-strawberry-red-200 w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full -top-20 -right-20"></div>
       <div className="organic-shape bg-strawberry-red-100 w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-[30%] -bottom-32 -left-32"></div>
@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="absolute top-40 right-[15%] w-16 md:w-24 h-16 md:h-24 border-4 border-strawberry-red-200 rounded-2xl rotate-12 opacity-50 hidden md:block"></div>
       <div className="absolute bottom-40 left-[10%] w-12 md:w-16 h-12 md:h-16 bg-strawberry-red-100 rounded-full opacity-60 hidden md:block"></div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
           <div className="space-y-6 md:space-y-10 relative">
             {/* Beta Badge */}
