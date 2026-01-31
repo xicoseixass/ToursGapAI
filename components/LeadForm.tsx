@@ -8,7 +8,7 @@ interface FormData {
   profile: string;
   city: string;
   whatsapp: string;
-  motivation: string;
+  honeypot: string;
 }
 
 export default function LeadForm() {
@@ -18,7 +18,7 @@ export default function LeadForm() {
     profile: '',
     city: '',
     whatsapp: '',
-    motivation: '',
+    honeypot: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,17 +30,36 @@ export default function LeadForm() {
     setIsSubmitting(true);
     setError('');
 
+    // Honeypot spam protection
+    if (formData.honeypot) {
+      setIsSuccess(true);
+      return;
+    }
+
+    // WhatsApp validation (Portuguese format: 9 digits)
+    const whatsappRegex = /^[9][0-9]{8}$/;
+    if (!whatsappRegex.test(formData.whatsapp)) {
+      setError('Por favor, insira um número de WhatsApp válido (formato: 912345678)');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
+      const { honeypot, ...dataToSend } = formData;
       const response = await fetch('/api/submit-lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error('Erro ao enviar formulário');
+        setError(result.error || 'Erro ao enviar formulário');
+        setIsSubmitting(false);
+        return;
       }
 
       setIsSuccess(true);
@@ -50,9 +69,10 @@ export default function LeadForm() {
         profile: '',
         city: '',
         whatsapp: '',
-        motivation: '',
+        honeypot: '',
       });
     } catch (err) {
+      console.error('Form submission error:', err);
       setError('Ocorreu um erro ao enviar a sua candidatura. Por favor, tente novamente.');
     } finally {
       setIsSubmitting(false);
@@ -89,13 +109,13 @@ export default function LeadForm() {
 
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-strawberry-red-600 font-black text-xs md:text-sm uppercase tracking-[0.4em] mb-3 md:mb-4">
-              Candidatura
+              Acesso Prioritário
             </h2>
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-display text-strawberry-red-950">
-              Seja Parceiro Fundador
+              Junte-se aos Parceiros Fundadores
             </h3>
             <p className="mt-3 md:mt-4 text-strawberry-red-950 font-bold text-sm md:text-base">
-              Avaliamos a compatibilidade com a nossa rede restrita.
+              Vagas limitadas para a nossa rede restrita.
             </p>
           </div>
 
@@ -182,19 +202,16 @@ export default function LeadForm() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="block text-xs md:text-sm font-black text-strawberry-red-950 uppercase tracking-widest">
-                Motivação
-              </label>
-              <textarea
-                required
-                value={formData.motivation}
-                onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
-                className="w-full bg-white border-4 border-strawberry-red-950 rounded-xl py-3 md:py-4 px-4 md:px-6 text-strawberry-red-950 font-bold focus:ring-0 focus:border-strawberry-red-600 transition-all resize-none text-sm md:text-base"
-                placeholder="Porquê ser parceiro fundador?"
-                rows={4}
-              ></textarea>
-            </div>
+            {/* Honeypot field - hidden from users */}
+            <input
+              type="text"
+              name="website"
+              value={formData.honeypot}
+              onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+            />
 
             {error && (
               <div className="bg-strawberry-red-100 border-4 border-strawberry-red-950 rounded-xl p-3 md:p-4">
@@ -208,7 +225,7 @@ export default function LeadForm() {
                 disabled={isSubmitting}
                 className="w-full bg-strawberry-red-600 text-white py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-sm md:text-lg tracking-widest uppercase neo-button disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'A ENVIAR...' : 'SUBMETER CANDIDATURA PRIORITÁRIA'}
+                {isSubmitting ? 'A ENVIAR...' : 'GARANTIR ACESSO PRIORITÁRIO'}
               </button>
               <p className="text-center text-[10px] md:text-xs font-black text-strawberry-red-400 mt-6 md:mt-8 flex items-center justify-center space-x-2">
                 <span className="material-symbols-outlined text-xs md:text-sm font-bold">lock</span>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Features() {
   return (
     <section className="py-20 md:py-32 bg-white relative overflow-hidden" id="value-prop">
@@ -19,7 +17,7 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-xl md:text-2xl font-black text-strawberry-red-950 mb-3 md:mb-4 font-display uppercase tracking-tight">
-              Segurança para Empreendedores
+              Valide Antes de Investir
             </h3>
             <p className="text-strawberry-red-900 font-bold leading-relaxed text-base md:text-lg">
               Validamos a sua ideia antes de investir 1€.
@@ -33,10 +31,10 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-xl md:text-2xl font-black text-strawberry-red-950 mb-3 md:mb-4 font-display uppercase tracking-tight">
-              Superioridade para Operadores
+              Veja Onde Concorrentes Falham
             </h3>
             <p className="text-strawberry-red-900 font-bold leading-relaxed text-base md:text-lg">
-              Saiba exatamente onde os concorrentes estão a falhar.
+              Descubra nichos ignorados pela concorrência.
             </p>
           </div>
 
@@ -47,10 +45,10 @@ export default function Features() {
               </span>
             </div>
             <h3 className="text-xl md:text-2xl font-black text-strawberry-red-950 mb-3 md:mb-4 font-display uppercase tracking-tight">
-              Fosso Defensivo
+              Encontre Nichos Exclusivos
             </h3>
             <p className="text-strawberry-red-900 font-bold leading-relaxed text-base md:text-lg">
-              Algoritmo exclusivo que cruza volume de buscas vs. inexistência de oferta.
+              Algoritmo que cruza procura alta com oferta inexistente.
             </p>
           </div>
         </div>

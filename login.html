@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TourGap.AI</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        strawberry: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neo': '4px 4px 0 0 #4c0519',
+                        'neo-lg': '6px 6px 0 0 #4c0519',
+                    },
+                    borderWidth: {
+                        '3': '3px',
+                        '4': '4px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-mesh {
+            background-color: #fff1f2;
+            background-image:
+                radial-gradient(at 0% 0%, #ffe4e6 0, transparent 50%),
+                radial-gradient(at 100% 0%, #fecdd3 0, transparent 50%),
+                radial-gradient(at 100% 100%, #ffe4e6 0, transparent 50%),
+                radial-gradient(at 0% 100%, #fff1f2 0, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen flex items-center justify-center font-sans antialiased p-4">
+
+    <div class="max-w-md w-full">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-block">
+                <div class="text-3xl font-display font-black text-strawberry-950 tracking-tight">
+                    TourGap<span class="text-strawberry-500">.AI</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-white border-4 border-strawberry-950 shadow-neo-lg p-8 rounded-2xl">
+            <h1 class="font-display font-bold text-3xl mb-2 text-center">Bem-vindo de volta</h1>
+            <p class="text-center text-gray-600 mb-8">Faça login para aceder ao seu painel</p>
+
+            <!-- Email/Password Login -->
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block font-bold mb-2" for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        required
+                        class="w-full px-4 py-3 border-3 border-strawberry-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-strawberry-500"
+                        placeholder="seu@email.com"
+                    />
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-2" for="password">Palavra-passe</label>
+                    <input
+                        type="password"
+                        id="password"
+                        required
+                        class="w-full px-4 py-3 border-3 border-strawberry-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-strawberry-500"
+                        placeholder="••••••••"
+                    />
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full bg-strawberry-600 text-white px-8 py-4 rounded-xl font-black text-sm tracking-widest shadow-neo hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-neo-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-[0_0_0_0_#4c0519] transition-all uppercase"
+                >
+                    Entrar
+                </button>
+            </form>
+
+            <!-- Sign Up Link -->
+            <p class="mt-6 text-center text-sm">
+                Não tem conta? <a href="signup.html" class="font-bold text-strawberry-600 hover:text-strawberry-700 underline">Criar conta</a>
+            </p>
+
+            <!-- Forgot Password -->
+            <p class="mt-2 text-center text-sm">
+                <a href="#" id="forgotPassword" class="font-bold text-gray-600 hover:text-strawberry-600">Esqueceu a palavra-passe?</a>
+            </p>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="mt-6 text-center">
+            <a href="index.html" class="font-bold text-strawberry-950 hover:text-strawberry-600 transition-colors flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Voltar à página inicial
+            </a>
+        </div>
+    </div>
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://ejevefkqumrjtgefkvww.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqZXZlZmtxdW1yanRnZWZrdnd3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg2NjkzNzksImV4cCI6MjA4NDI0NTM3OX0.eC20R8aVl7GANsDEiCO0p4egw5w7IxLK8fmosSbfjTE';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Check if already logged in
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                window.location.href = '/dashboard';
+            }
+        }
+        checkAuth();
+
+        // Email/Password Login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+
+            submitButton.textContent = 'Entrando...';
+            submitButton.disabled = true;
+
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+
+                if (error) throw error;
+
+                // Success
+                alert('✅ Login realizado com sucesso!');
+                window.location.href = '/dashboard';
+            } catch (error) {
+                console.error('Login error:', error);
+                if (error.message.includes('Invalid login credentials')) {
+                    alert('❌ Email ou palavra-passe incorretos');
+                } else if (error.message.includes('Email not confirmed')) {
+                    alert('📧 Email não confirmado. Verifique sua caixa de entrada para confirmar antes de fazer login.');
+                } else {
+                    alert('❌ Erro ao fazer login: ' + error.message);
+                }
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+
+        // Forgot Password
+        document.getElementById('forgotPassword').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = prompt('Digite seu email para recuperação de senha:');
+            if (email) {
+                try {
+                    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                        redirectTo: window.location.origin + '/reset-password.html'
+                    });
+
+                    if (error) throw error;
+
+                    alert('✅ Email de recuperação enviado! Verifique sua caixa de entrada.');
+                } catch (error) {
+                    console.error('Password reset error:', error);
+                    alert('❌ Erro ao enviar email de recuperação: ' + error.message);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

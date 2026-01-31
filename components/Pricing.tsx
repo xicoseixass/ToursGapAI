@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 export default function Pricing() {
   return (
     <section className="py-20 md:py-32 bg-strawberry-red-50 border-y-4 border-strawberry-red-950" id="pricing">
@@ -18,7 +16,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-stretch max-w-5xl mx-auto">
           {/* Explorer Plan */}
           <div className="bg-white p-6 md:p-8 rounded-2xl md:rounded-3xl neo-card flex flex-col hover:shadow-[14px_14px_0px_0px_rgba(76,5,25,0.1)] transition-all">
             <h4 className="font-black text-strawberry-red-400 uppercase text-[10px] tracking-widest mb-3 md:mb-4">
@@ -68,31 +66,6 @@ export default function Pricing() {
               href="#apply"
             >
               ADQUIRIR PRO
-            </a>
-          </div>
-
-          {/* Market Leader Plan */}
-          <div className="bg-white p-6 md:p-8 rounded-2xl md:rounded-3xl neo-card flex flex-col hover:shadow-[14px_14px_0px_0px_rgba(76,5,25,0.1)] transition-all">
-            <h4 className="font-black text-strawberry-red-400 uppercase text-[10px] tracking-widest mb-3 md:mb-4">
-              Market Leader
-            </h4>
-            <div className="flex items-baseline mb-4 md:mb-6">
-              <span className="text-4xl md:text-5xl font-black text-strawberry-red-950">€199</span>
-              <span className="text-strawberry-red-400 font-bold ml-1 text-xs md:text-sm">/mês</span>
-            </div>
-            <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8 flex-grow">
-              <li className="flex items-start space-x-2 md:space-x-3 text-xs md:text-sm font-bold text-strawberry-red-950">
-                <span className="material-symbols-outlined text-strawberry-red-500 text-base md:text-lg font-bold flex-shrink-0">
-                  check
-                </span>
-                <span>Consultoria de dados para agências de grande escala.</span>
-              </li>
-            </ul>
-            <a
-              className="block w-full text-center py-3 md:py-4 rounded-xl bg-strawberry-red-950 text-white font-black text-[10px] md:text-xs hover:bg-strawberry-red-600 transition-all border-4 border-strawberry-red-950"
-              href="#apply"
-            >
-              ESCOLHER LÍDER
             </a>
           </div>
 

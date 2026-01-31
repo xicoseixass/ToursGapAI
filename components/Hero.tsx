@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 
 export default function Hero() {
@@ -18,66 +17,41 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-8 lg:px-10 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-24 items-center max-w-full">
           <div className="space-y-6 md:space-y-10 relative">
-            {/* Beta Badge */}
-            <div className="inline-flex items-center space-x-3 px-1 py-1 bg-white rounded-full border-4 border-strawberry-red-950 shadow-[4px_4px_0px_0px_rgba(76,5,25,1)]">
-              <div className="flex items-center pl-4 pr-2">
-                <span className="relative flex h-3 w-3 mr-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-strawberry-red-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-strawberry-red-500"></span>
-                </span>
-                <span className="text-xs font-black text-strawberry-red-950 uppercase tracking-widest">
-                  Lançamento Beta
-                </span>
-              </div>
-              <div className="flex items-center bg-strawberry-red-950 text-white px-4 py-1.5 rounded-full text-[11px] font-black">
-                <div className="w-5 h-5 rounded-full bg-strawberry-red-300 mr-2 border-2 border-white overflow-hidden">
-                  <Image
-                    alt="avatar"
-                    className="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLVbpTxxlvSHkbq0OcjEMUpOieqgQmhob-uhMmeMxo9bcinXWdLj5Ffxh0-UY3qpj60Sc9HK4vulE10oA8-i2_u2FbfzHLuNpFyVKdqbdMUkg2Uq5oJp9Jkua71B4OlKUzfuMb9NlfEevAQjjOOfDtSgxeyfiOj8RjouQK7bJj4AloxhFL8BjSa08_NH3qoy74SA6KeFdcgUXf_iN1ZWJGgyDmpCPl1N_jCCeXia9q3yZhUB0XJwoi-zdSYsYy1rI9lGq4KiNS698"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <span>8000+ Análises</span>
-              </div>
+            {/* Badge */}
+            <div className="inline-block bg-strawberry-red-100 border-2 border-strawberry-red-950 px-4 py-1 mb-2 font-bold transform -rotate-2 shadow-[4px_4px_0px_0px_rgba(76,5,25,1)]">
+              🎯 Focado em Portugal: Lisboa, Porto, Algarve
             </div>
 
             {/* Headline */}
             <div className="relative">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-[0.95] font-display text-strawberry-red-950">
-                Não adivinhe o seu{' '}
-                <span className="text-strawberry-red-600 underline decoration-4 md:decoration-8 decoration-strawberry-red-200 underline-offset-4 md:underline-offset-8">
-                  negócio.
-                </span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] font-display text-strawberry-red-950">
+                O Turismo em Portugal{' '}
+                <span className="text-strawberry-red-600 px-2 bg-white border-2 border-strawberry-red-950 shadow-[4px_4px_0px_0px_rgba(76,5,25,1)] inline-block transform rotate-1">
+                  não
+                </span>{' '}
+                está saturado.
                 <br />
-                <span className="italic font-bold">Capture a lacuna.</span>
+                O seu nicho é que está.
               </h1>
             </div>
 
             {/* Subheadline */}
             <div className="relative">
-              <p className="text-lg sm:text-xl md:text-2xl text-strawberry-red-950 max-w-xl leading-snug font-medium">
-                O TourGap.AI identifica falhas reais dos seus concorrentes e deteta oportunidades de lucro em{' '}
-                <span className="bg-strawberry-red-200 px-2 font-bold">Lisboa</span>.
+              <p className="text-lg sm:text-xl md:text-2xl text-strawberry-red-950 max-w-2xl leading-relaxed font-medium">
+                Enquanto centenas de empresas competem pelos mesmos tours, o nosso algoritmo identifica{' '}
+                <span className="bg-strawberry-red-200 px-1 border-b-4 border-strawberry-red-500">falhas de mercado inexploradas</span> em Portugal.
               </p>
             </div>
 
             {/* CTA */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-8 pt-4">
+            <div className="flex flex-col items-start gap-4 pt-4">
               <a
-                className="w-full sm:w-auto bg-strawberry-red-600 text-white px-6 md:px-10 py-5 md:py-6 rounded-xl font-black text-xs md:text-sm tracking-widest neo-button flex items-center justify-center group"
+                className="w-full sm:w-auto bg-strawberry-red-500 text-white text-lg sm:text-xl font-display font-black px-8 py-4 border-4 border-strawberry-red-950 shadow-[4px_4px_0px_0px_rgba(76,5,25,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(76,5,25,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[0px_0px_0px_0px_rgba(76,5,25,1)] transition-all uppercase tracking-wide"
                 href="#apply"
               >
-                <span>QUERO SER PARCEIRO FUNDADOR</span>
-                <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
+                Ver Falhas de Mercado Agora
               </a>
-              <div className="flex items-center justify-center space-x-2 text-strawberry-red-950 font-bold">
-                <span className="material-symbols-outlined fill-1 text-strawberry-red-600">verified</span>
-                <span className="text-xs uppercase tracking-tight">Acesso restrito a 50 vagas</span>
-              </div>
+              <p className="text-sm font-bold opacity-80 pl-2">⚡ Análise atualizada diariamente</p>
             </div>
           </div>
 
@@ -85,8 +59,8 @@ export default function Hero() {
           <div className="relative mt-8 lg:mt-0 max-w-full">
             <div className="absolute -top-8 md:-top-14 -right-1 md:-right-8 w-16 h-16 md:w-32 md:h-32 z-30 starburst-sticker text-[8px] md:text-[12px] leading-tight p-1.5 shadow-xl">
               <span className="font-black">
-                LÍDER EM<br />
-                LISBOA
+                DADOS<br />
+                REAIS
               </span>
             </div>
 

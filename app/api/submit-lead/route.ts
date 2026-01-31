@@ -4,10 +4,12 @@ import { createClient } from '@supabase/supabase-js';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, profile, city, whatsapp, motivation } = body;
+    const { name, email, profile, city, whatsapp } = body;
+
+    console.log('Received form data:', { name, email, profile, city, whatsapp });
 
     // Validate required fields
-    if (!name || !email || !profile || !city || !whatsapp || !motivation) {
+    if (!name || !email || !profile || !city || !whatsapp) {
       return NextResponse.json(
         { error: 'Todos os campos são obrigatórios' },
         { status: 400 }
@@ -19,6 +21,9 @@ export async function POST(request: NextRequest) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+    console.log('Supabase URL:', supabaseUrl);
+    console.log('Has service role key:', !!process.env.SUPABASE_SERVICE_ROLE_KEY);
+
     if (!supabaseUrl || !supabaseKey) {
       console.error('Missing environment variables');
       return NextResponse.json(
@@ -27,7 +32,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabase = createClient(supabaseUrl, supabaseKey);
+    const supabase = createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    });
 
     // Insert into Supabase
     const { data, error } = await supabase
@@ -39,7 +49,6 @@ export async function POST(request: NextRequest) {
           profile,
           city,
           whatsapp,
-          motivation,
         },
       ])
       .select();
@@ -47,7 +56,7 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('Supabase error:', error);
       return NextResponse.json(
-        { error: 'Erro ao guardar dados' },
+        { error: `Erro ao guardar dados: ${error.message}` },
         { status: 500 }
       );
     }

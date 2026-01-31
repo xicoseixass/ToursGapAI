@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TourGaps.ai | Inteligência de Mercado Premium para Turismo",
-  description: "O TourGaps.ai identifica falhas reais dos seus concorrentes e deteta oportunidades de lucro antes de toda a gente. Transforme dados brutos em lucro real.",
+  title: "TourGap.AI | Inteligência de Mercado Premium para Turismo",
+  description: "O TourGap.AI identifica falhas reais dos seus concorrentes e deteta oportunidades de lucro antes de toda a gente. Transforme dados brutos em lucro real.",
 };
 
 export default function RootLayout({
